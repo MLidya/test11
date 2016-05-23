@@ -32,121 +32,6 @@
     <body>
 	
 	
-	<style>
-
-.s {
-  font: 75px Arial;
-  width:300px;
-  margin-left: 450px;
-  
-}
-
-.text--line {
-  font-size: 75px;
-}
-
-
-.text-copy {
-  fill: none;
-  stroke: white;
-  stroke-dasharray: 8% 30%;
-  stroke-width: 5px;
-  -webkit-animation: stroke-offset 10s infinite linear;
-          animation: stroke-offset 10s infinite linear;
-}
-.text-copy:nth-child(1) {
-  stroke: #360745;
-  stroke-dashoffset: 20%;
-}
-.text-copy:nth-child(2) {
-  stroke: #D61C59;
-  stroke-dashoffset: 42%;
-}
-.text-copy:nth-child(3) {
-  stroke: #E7D84B;
-  stroke-dashoffset: 35%;
-}
-.text-copy:nth-child(4) {
-  stroke: #EFEAC5;
-  stroke-dashoffset: 25%;
-}
-.text-copy:nth-child(5) {
-  stroke: #1B8798;
-  stroke-dashoffset: 39%;
-}
-
-@-webkit-keyframes stroke-offset {
-  50% {
-    stroke-dashoffset: 40%;
-    stroke-dasharray: 0 87.5%;
-  }
-}
-
-@keyframes stroke-offset {
-  50% {
-    stroke-dashoffset: 40%;
-    stroke-dasharray: 0 87.5%;
-  }
-}
-
-</style>
-
-
-<div class="top-header animated bounceInDown">
-				
-					<!---start-logo---->
-					<div class="logo" style="margin-left: 60px;">
-						<a href="index.html"><img src="images/logo.png/" style="margin-right: 500px;"></a>
-						<a href="index.html"><img src="images/logo.png/" style="margin-left: 500px;"></a>
-					</div>
-					
-					<!---End-logo---->
-					
-					<!---start-top-nav---->
-					<div class="top-nav" id="navigation">
-						
-					</div>
-					<div class="clear"> </div>
-					<!---//End-top-nav---->
-				</div>
-<div class="s">
-<svg viewBox="0 0 800 520">
-  <symbol id="s-text">
-    <text text-anchor="middle"
-          x="30%"
-          y="10%"
-          class="text--line"
-          >
-      ORMVA
-    </text>
-    <text text-anchor="middle"
-          x="80%"
-          y="10%"
-          class="text--line2"
-          >
-      TADLA
-    </text>
-    
-  </symbol>
-  
-  <g class="g-ants">
-    <use xlink:href="#s-text"
-      class="text-copy"></use>     
-    <use xlink:href="#s-text"
-      class="text-copy"></use>     
-    <use xlink:href="#s-text"
-      class="text-copy"></use>     
-    <use xlink:href="#s-text"
-      class="text-copy"></use>     
-    <use xlink:href="#s-text"
-      class="text-copy"></use>     
-  </g>
-  
-  
-</svg>
-
-</div>
-	
 	
 	
 	
@@ -291,11 +176,11 @@ h1 {
 	  </div> 
 	  		
             <div class="column_middle">
-				<h1> Table des demandes d'autorisation d'absence</h1>
+				<h1 style="margin-left:20px;margin-right:20px;"> Les autorisations d'absence</h1>
 				
 							<input type="button" value="Demander une Autorisation d'absence" class="myButton" style="margin-top:20px; margin-bottom:20px; margin-left:20px;">
 
-		            <table>
+		            <table style="margin-left:20px;margin-right:20px;">
 						<tr>
 							<th>Code Autorisation</th>
 							<th>Motif</th>
@@ -316,9 +201,9 @@ h1 {
 						
 					</table>					
 		         
-		          	 <h1 style="margin-top:40px;">Situation d'absence Pour l'annee 2016 </h1>
+		          	 <h1 style="margin-left:20px;margin-right:20px; margin-top:40px;">Situation d'absence Pour l'annee 2016 </h1>
 					 <div class="graph" >
-		             	<canvas id="line-chart" style="width:100%;"> </canvas>
+		             	<canvas id="line-chart" style="width:100%;margin-left:40%;"> </canvas>
 		             	<script>
 							var lineChartData = {
 								labels : ["Mars","Avril","Mai"],
@@ -328,7 +213,7 @@ h1 {
 										strokeColor : "#FFF",
 										pointColor : "#11a8ab",
 										pointStrokeColor : "#FFF",
-										data : [21,48,35]
+										data : [5,19,10]
 									}
 								]
 								
