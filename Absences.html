@@ -76,44 +76,48 @@ background-color: #9aebfd;
 
 }
 .myButton {
-	-moz-box-shadow: 0px 10px 14px -7px #276873;
-	-webkit-box-shadow: 0px 10px 14px -7px #276873;
-	box-shadow: 0px 10px 14px -7px #276873;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3), color-stop(1, #408c99));
-	background:-moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
-	background:-webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
-	background:-o-linear-gradient(top, #599bb3 5%, #408c99 100%);
-	background:-ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);
-	background-color:#599bb3;
-	-moz-border-radius:8px;
-	-webkit-border-radius:8px;
-	border-radius:8px;
+	-moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	-webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #019ad2));
+	background:-moz-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-webkit-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-o-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-ms-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#019ad2',GradientType=0);
+	background-color:#33bdef;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #057fd0;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:20px;
+	font-size:15px;
 	font-weight:bold;
-	padding:13px 32px;
+	padding:6px 24px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #3d768a;
+	text-shadow:0px -1px 0px #5b6178;
 }
 .myButton:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99), color-stop(1, #599bb3));
-	background:-moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:-webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:-o-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:-ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
-	background-color:#408c99;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #019ad2), color-stop(1, #33bdef));
+	background:-moz-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:-webkit-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:-o-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:-ms-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#019ad2', endColorstr='#33bdef',GradientType=0);
+	background-color:#019ad2;
 }
 .myButton:active {
 	position:relative;
 	top:1px;
 }
+
+
+
 h1 {
     
     margin-top: 0;
@@ -178,8 +182,24 @@ h1 {
             <div class="column_middle">
 				<h1 style="margin-left:20px;margin-right:20px;"> Les autorisations d'absence</h1>
 				
-							<input type="button" value="Demander une Autorisation d'absence" class="myButton" style="margin-top:20px; margin-bottom:20px; margin-left:20px;">
-
+				</br></br><details close >
+     					 <summary style="color: white; margin-left:50px;"><strong>Formulaire de demande d'autorisation d'absence:</strong></summary>
+						 		<form style="margin-left:30%;">
+						 		
+						 		<input type="hidden" name="mat" value="">
+						 		<input type="hidden" name="action" value="">
+						 		
+						 		</br><label style="color: white; margin-left:30px;">Date demandee:</label></br>
+						 		<input type="date" name="dd" style="margin-left:50px;"></br>
+						 		<label style="color: white; margin-left:30px;">Motif:</label> </br>
+						 		<textarea  name="motif" style="margin-left:50px;"></textarea></br></br>
+						 		<input type="submit" class="myButton" value="Enregistrer">
+							</form>
+				</details>
+				</br>
+				</br>
+				
+			
 		            <table style="margin-left:20px;margin-right:20px;">
 						<tr>
 							<th>Code Autorisation</th>
