@@ -34,6 +34,34 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        var db = window.sqlitePlugin.openDatabase({name: "Databases"});
+      db.transaction(function(tx) {
+         tx.executeSql('CREATE TABLE IF NOT EXISTS SimpsonFamily (id integer primary key, nom text)');
+      
+	  
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (1,'Homer')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (2,'Marge')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (3,'Bart')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (4,'Lisa')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (5,'Maggie')");
+      
+	  
+     tx.executeSql("SELECT * FROM SimpsonFamily", [], function(tx, res) {
+       alert("Nombre d'enregistrements  : " + res.rows.length);
+    });
+   });
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+    }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
