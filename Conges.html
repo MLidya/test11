@@ -128,6 +128,88 @@ h1 {
     text-align: center;
 }
 </style>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style type="text/css">
+.form-style-8{
+    font-family: 'Open Sans Condensed', arial, sans;
+    width: 500px;
+    padding: 30px;
+    background: #FFFFFF;
+    margin: 50px auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+
+}
+.form-style-8 h2{
+    background: #4D4D4D;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #797979;
+    font-size: 18px;
+    font-weight: 100;
+    padding: 20px;
+    margin: -30px -30px 30px -30px;
+}
+.form-style-8 input[type="text"],
+.form-style-8 input[type="date"],
+.form-style-8 input[type="datetime"],
+.form-style-8 input[type="email"],
+.form-style-8 input[type="number"],
+.form-style-8 input[type="search"],
+.form-style-8 input[type="time"],
+.form-style-8 input[type="url"],
+.form-style-8 input[type="password"],
+.form-style-8 textarea,
+.form-style-8 select 
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    margin-bottom: 10px;
+    font: 16px Arial, Helvetica, sans-serif;
+    height: 45px;
+}
+.form-style-8 textarea{
+    resize:none;
+    overflow: hidden;
+}
+.form-style-8 input[type="button"], 
+.form-style-8 input[type="submit"]{
+    -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    background-color: #2CBBBB;
+    border: 1px solid #27A0A0;
+    display: inline-block;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 14px;
+    padding: 8px 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.form-style-8 input[type="button"]:hover, 
+.form-style-8 input[type="submit"]:hover {
+    background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+    background-color:#34CACA;
+}
+</style>
+<script type="text/javascript">
+//auto expand textarea
+function adjust_textarea(h) {
+    h.style.height = "20px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+</script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
@@ -180,30 +262,34 @@ h1 {
             <div class="column_middle">
 			
 				<h1 style="margin-left:20px;margin-right:20px;"> Les Conges</h1>
-				<form style="margin-left:30%; margin-top:20px;">
+				
 <details close>
-      <summary style="color: white;"><strong>Formulaire de demande de conge</strong></summary>
-						 <label style="color: white;">Type Conge:</label>
+      <summary style="color: white;"><strong>Afficher le formulaire de demande de conge</strong></summary>
+						
+	 <div class="form-style-8">
+  <form>
+   <label style="color: white;">Type Conge:</label>
 						 
-						 <select id="type_conge" name="type_conge">
-					
-							</select></br>
-							 <ul>
-						 <label style="color: white;">Au titre de l'annee: </label>
-						<li> <input type="number" name="annee" min="2015" max="2016"></li>
-		                  <label style="color: white;">Nombre de jours:</label>
-		              <li>    <input type="number" min=5 name="nbrejrs"></li>
-		                  <label style="color: white;">Date Depart:</label>
-		              <li>    <input type="date" name="dp"></li>
-		                  <label style="color: white;">Adresse au momet du conge</label>
-		              <li>    <input type="text" name="adc"></li>
-		                  <label style="color: white;">Telephone au momet du conge</label>
-		              <li>    <input type="text" name="telc"></li>
-		                  <label style="color: white;">Interimaire:</label>
-		              <li>    <input type="text" name="Intr"></li>
-		                  </ul>	                  
-		                 </br> <input type="submit" value="Envoyer" class="myButton">
-		                  </form>
+		<select id="type_conge" name="type_conge">
+	<option value="value1">Conge Administrative</option> 
+  <option value="value2" >Conge Pelerinage</option>
+  <option value="value3">conge mariage agent</option>
+  <option value="value4">conge mariage enfant</option>
+  <option value="value5">conge naissance</option>
+  <option value="value6">conge circoncision</option>
+  <option value="value7">conge deces</option>
+  <option value="value8"> conge maladie</option>
+		</select></br>
+    <input type="number" name="field1" placeholder="Au titre de l'annee" min="2015" max="2016" />
+    <input type="number" name="field2" placeholder="nombre de jours" min="5"/>
+    <input type="date" name="field3" placeholder="Date Depart" />
+    <input type="text" name="adc" placeholder="Adresse au momet du conge" >
+	<input type="text" name="adc" placeholder="Telephone au momet du conge" >
+	<input type="text" name="adc" placeholder="Interimaire" >
+	
+    <input type="button" value="Envoyer" />
+  </form>
+</div>
 </details>
 		            <table style="margin-left:20px;margin-right:20px;margin-top:20px;">
 						<tr>
@@ -212,7 +298,9 @@ h1 {
 							<th>Date debut</th>
 							<th>Interimaire</th>
 							<th>Tel</th>
-							<th>Adresse</th>		
+							<th>Adresse</th>
+							<th> Etat </th>
+							
 							
 						</tr>
 						<tr>
@@ -222,7 +310,7 @@ h1 {
 						<td>M.Hamid zahir</td>
 						<td>00 00 00 00</td>
 						<td>Adresse</td>
-						
+						<td> en cours </td>
 						</tr>
 						<tr>
 						<td>5</td>
@@ -231,6 +319,7 @@ h1 {
 						<td>M.Hamid zahir</td>
 						<td>00 00 00 00</td>
 						<td>Adresse</td>
+						<td> valide </td>
 						</tr>
 						
 					</table>					
