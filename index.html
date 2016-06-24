@@ -28,6 +28,81 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script>
+		
+	
+document.addEventListener("deviceready", onDeviceReady, false);
+ 
+function onDeviceReady() {
+	alert('debut');
+var onSuccess = function(position) {
+        alert('Latitude: '          + position.coords.latitude          + '\n' +
+              'Longitude: '         + position.coords.longitude         + '\n' +
+              'Altitude: '          + position.coords.altitude          + '\n' +
+              'Accuracy: '          + position.coords.accuracy          + '\n' +
+              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+              'Heading: '           + position.coords.heading           + '\n' +
+              'Speed: '             + position.coords.speed             + '\n' +
+              'Timestamp: '         + position.timestamp                + '\n');
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	
+	var db = window.openDatabase("databasename", "4", "Cordova Demo",'');
+      db.transaction(function(tx) {
+         tx.executeSql('CREATE TABLE IF NOT EXISTS SimpsonFamily (id integer primary key, nom text)');
+      });
+	    
+	alert('bd et table created');
+	
+	db.transaction(function(tx) {
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (1,'Homer')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (2,'Marge')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (3,'Bart')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (4,'Lisa')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (5,'Maggie')");
+      });
+	  
+	  alert('insertion reussie');
+	  
+	  db.transaction(function(tx) {
+     tx.executeSql("SELECT * FROM SimpsonFamily", [], function(tx, res) {
+       alert("Nombre d'enregistrements  : " + res.rows.length);
+    });
+   });
+   
+   db.transaction(function(tx){
+   
+   tx.executeSql("SELECT * FROM SimpsonFamily", [], function (tx, results) {
+
+		var len = results.rows.length, i;
+		//$(".rowCount").append(len);
+		//document.write("<table>");
+		for (i = 0; i < len; i++){
+		//$("#TableData").append("<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).nom+"</td></tr>");
+		
+		//document.write("<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).nom+"</td></tr>");
+		
+}
+//document.write("</table>");
+}, null);
+   
+   
+   });
+	
+	
+	
+	}	
+		
+		
+		</script>
 		<script src="js/jquery.js"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script>
@@ -72,6 +147,79 @@
 		width: 400px;
 		height: 400px;
 	}
+
+
+</style>
+<script>
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+      var db = window.sqlitePlugin.openDatabase({name: "Databases"});
+      db.transaction(function(tx) {
+         tx.executeSql('CREATE TABLE IF NOT EXISTS SimpsonFamily (id integer primary key, nom text)');
+      });
+	  db.transaction(function(tx) {
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (1,'Homer')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (2,'Marge')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (3,'Bart')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (4,'Lisa')");
+         tx.executeSql("INSERT INTO SimpsonFamily(id, nom) VALUES (5,'Maggie')");
+      });
+	  db.transaction(function(tx) {
+     tx.executeSql("SELECT * FROM SimpsonFamily", [], function(tx, res) {
+       alert("Nombre d'enregistrements  : " + res.rows.length);
+    });
+   
+}
+
+</script>
+
+<style>
+
+.myButton {
+	-moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	-webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #019ad2));
+	background:-moz-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-webkit-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-o-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-ms-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#019ad2',GradientType=0);
+	background-color:#33bdef;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #057fd0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+	margin-right:20px;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #019ad2), color-stop(1, #33bdef));
+	background:-moz-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:-webkit-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:-o-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:-ms-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#019ad2', endColorstr='#33bdef',GradientType=0);
+	background-color:#019ad2;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
 
 
 </style>
@@ -143,20 +291,7 @@
 	  <div class="main">  
 	    <div class="wrap">  		 
 	       <div class="column_left">	
-	       	  <!---         
-	    		 <div class="menu_box">
-	    		 	 <h3>Menu Box</h3>
-	    		 	   <div class="menu_box_list">
-				      		<ul>
-						  		<li><a href="#" class="messages"><span>Messages</span><label class="digits">24</label><div class="clear"></div></a></li>
-						  		<li class="active"><a href="#" class="invites"><span>Invites</span><label class="digits active">3</label><div class="clear"></div></a></li>
-						  		<li><a href="#" class="events"><span>Events</span><label class="digits">5</label><div class="clear"></div></a></li>
-						  		<li><a href="#" class="account_settings"><span>Account Settings</span></a></li>
-						  		<li><a href="#" class="statistics"><span>Statistics</span></a></li>						  	
-				    		</ul>
-				      </div>
-	    		 </div>
-	    		 ----->
+	       	  
 	    		 <div class="chart">
 		               <h3>Situation Personnel</h3>
 		                  <div class="diagram">
@@ -169,7 +304,7 @@
 						<div class="chart_list">
 			           	  <ul>
 			           	  	<li><a href="#" class="red">absence justife<p class="percentage">9<em>%</em></p></a></li>
-			           	  	<li><a href="#" class="purple">jrs_Conge<p class="percentage">20<em>%</em></p></a></li>
+			           	  	<li><a href="#" class="purple">jours_Conge<p class="percentage">20<em>%</em></p></a></li>
 			           	  	<li><a href="#" class="yellow">absence non justifie<p class="percentage">7<em>%</em></p></a></li>
 							<li><a href="#" class="blue">jours travaillés<p class="percentage">64<em>%</em></p></a></li>
 
@@ -354,7 +489,7 @@
    					<nav id="menu">
 							<ul>
 								<li><a href="index.html"><i></i> Accueil</a></li>
-								<li><a href="formation.php"><span><i></i> Formations</span><label class="digits active">5</label><div class="clear"></div></a></li>
+								<li><a href="Formations.html"><span><i></i> Formations</span><label class="digits active">5</label><div class="clear"></div></a></li>
 						  		<li><a href="Conges.html"><span> <i></i> Demandes de conge</span><label class="digits">3</label><div class="clear"></div></a></li>
 						  		<li><a href="Absences.html"><span> <i></i> Demande d'autorisation d absence</span><label class="digits">5</label><div class="clear"></div></a></li>
 						  		<li><a href="Avances.html"><i></i>Demandes d'avances</a></li>
@@ -362,47 +497,39 @@
 								<li><a href="#"><i></i>Settings</a></li>																
 							</ul>
 					 </nav>
-		<div class="social_networks">
+		
+				  
+				  <!--Map placeholder-->
+	<div id="map" style="padding-left: 100px; padding-right:250px; margin-left:10px; margin-top: 10px;">
+	</div>
+<!-- Longitude and lattitude-->	
+<div style="margin-left: 50px; ">
+<!--<div id="lat"></div>
+
+<div id="long"></div>
+	-->	
+<input type="submit" class="myButton" value="Enregistrer ma position" style="margin-top:20px;">	
+</div>				  
+				  
+							
+				 
+<!-- SiteSearch Google --> 
+<form action="http://www.votresiteinternet.fr/recherche.html" id="cse-search-box"> <div> <input type="hidden" name="cx" value="partner-pub-7251150894597704:nz8345-k1u9" /> <input type="hidden" name="cof" value="FORID:9" /> <input type="hidden" name="ie" value="ISO-8859-1" /> <input name="sitesearch" value="www.votresiteinternet.fr" type="hidden"> <input type="text" name="q" size="31" /> <input type="submit" name="sa" value="Rechercher" /> </div> <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=fr"></script> </form> <!-- SiteSearch Google -->
+<div id="cse-search-results"></div>
+ <script type="text/javascript"> var googleSearchIframeName = "cse-search-results"; var googleSearchFormName = "cse-search-box"; var googleSearchFrameWidth = 795; var googleSearchDomain = "www.google.fr"; var googleSearchPath = "/cse"; </script> <script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script> 
+
+						
+            </div>
+			<div class="social_networks">
 				      		
 				      			<a href="#" class="facebook"><i><img src="images/facebook_icon.png" alt="" /></i></a>
 				      			<a href="#" class="twitter"><i><img src="images/tweets.png" alt="" /></i></a>
 				      			<a href="#" class="googleplus"><i><img src="images/google+.png" alt="" /></i></a>
 				    	
 		          </div>
-				  
-				  <!--Map placeholder-->
-	<div id="map">
-	</div>
-<!-- Longitude and lattitude-->	
-<div id="lat"></div>
-
-<div id="long"></div>
-				  
-				  
-				  
-							
-				 
-				<div id="cont_OTg4ODN8NXwxfDJ8MXwzMjA5NjF8MXxGRkZGRkZ8Y3wx"><div id="spa_OTg4ODN8NXwxfDJ8MXwzMjA5NjF8MXxGRkZGRkZ8Y3wx"><a id="a_OTg4ODN8NXwxfDJ8MXwzMjA5NjF8MXxGRkZGRkZ8Y3wx" href="http://www.meteocity.com/maroc/casablanca_v98883/" target="_blank" style="color:#333;text-decoration:none;">Météo Casablanca</a> ©<a href="http://www.meteocity.com">meteocity.com</a></div><script type="text/javascript" src="http://widget.meteocity.com/js/OTg4ODN8NXwxfDJ8MXwzMjA5NjF8MXxGRkZGRkZ8Y3wx"></script></div>
-<!-- SiteSearch Google --> <form action="http://www.votresiteinternet.fr/recherche.html" id="cse-search-box"> <div> <input type="hidden" name="cx" value="partner-pub-7251150894597704:nz8345-k1u9" /> <input type="hidden" name="cof" value="FORID:9" /> <input type="hidden" name="ie" value="ISO-8859-1" /> <input name="sitesearch" value="www.votresiteinternet.fr" type="hidden"> <input type="text" name="q" size="31" /> <input type="submit" name="sa" value="Rechercher" /> </div> <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=fr"></script> </form> <!-- SiteSearch Google -->
-<div id="cse-search-results"></div> <script type="text/javascript"> var googleSearchIframeName = "cse-search-results"; var googleSearchFormName = "cse-search-box"; var googleSearchFrameWidth = 795; var googleSearchDomain = "www.google.fr"; var googleSearchPath = "/cse"; </script> <script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script> 
-
-						
-            </div>
-				
-				
-				
-				
-				
-				
 		 <div class="copy-right">
 				<p>© 2016 Designed by Saadia Nemmaoui  </p>
 	 	 </div>   
-		
-		
-		
-		
-		
-		
 		
     </body>
 </html>
